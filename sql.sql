@@ -1,0 +1,13 @@
+select * from customers limit 5 ;
+select distinct	city from customers order by city desc;
+select distinct	city from offices;
+select max(creditLimit),min(creditLimit),avg(creditLimit) from customers;																																																									
+select city from offices where city not in ( select city from customers);                 
+select city from offices where city in ( select city from customers);                 
+select * from customers where ((city is null) or (state is null)) and (creditLimit between 80000 and 130000);                                                       
+select count(orderNumber),orderDate from orders group by orderDate order by count(orderNumber) desc;
+select orders.orderDate,orders.orderNumber,customers.customerName,customers.phone from customers,orders  ;         
+select customers.customerName , customers.phone, orders.status from customers,orders where status like '%cancelled%';
+select * from orderdetails order by priceEach desc limit 4;
+select count(orderNumber),orderDate from orders where orderDate like '%2003%' or orderDate like '%2004%' group by orderDate order by count(orderNumber) desc;
+select count(city),city as c from customers group by city  having count(city) > 4  ;
